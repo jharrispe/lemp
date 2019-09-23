@@ -1,0 +1,4 @@
+
+  web:
+    volumes:
+      - ${LETSENCRYPT_DIR}:/etc/letsencrypt

@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  mailhog:
+    container_name: mailhog
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:4.8
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - 8080:80
+
+  dnsmasq:
+    container_name: dnsmasq
+    image: strm/dnsmasq
+    restart: always
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    ports:
+      - "53:53/udp"
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  default:
+    driver: bridge
+

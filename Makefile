@@ -3,6 +3,15 @@
 include .env
 export
 
+build:
+	docker-compose build
+
+up:
+	docker-compose up -d
+
+down:
+	docker-compose down
+
 restart:
 	docker exec -it alpine supervisorctl restart nginx
 

@@ -26,4 +26,4 @@ RUN addgroup -S app && adduser -S app -G app
 RUN echo "app ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 COPY ./fs/ /
 WORKDIR /app
-CMD ["boot"]
+CMD ["supervisord","-n","-j","/supervisord.pid"]

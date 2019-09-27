@@ -17,3 +17,9 @@ restart:
 
 prod:
 	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+certbot-renew:
+	docker exec -it alpine /usr/bin/certbot renew
+	docker exec -it alpine nginx -s reload
+
+

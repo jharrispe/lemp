@@ -16,6 +16,9 @@ start:
 stop:
 	docker-compose down
 
+sh:
+	docker exec -it alpine sh
+
 restart:
 	docker exec -it alpine supervisorctl restart nginx
 

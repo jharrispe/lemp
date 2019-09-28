@@ -3,22 +3,26 @@
 include .env
 export
 
+ifeq (${ENVIRONMENT}, production)
+	env_parms=-f docker-compose.yml -f docker-compose.prod.yml
+endif
+
 build:
 	docker-compose build
 
-up:
-	docker-compose up -d
+start:
+	docker-compose ${env_parms} up -d
 
-down:
+stop:
 	docker-compose down
 
 restart:
 	docker exec -it alpine supervisorctl restart nginx
 
-prod:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-
 certbot-renew:
 	docker exec alpine /usr/bin/certbot renew
+	docker exec alpine nginx -s reload
+
+nginx-reload:
 	docker exec alpine nginx -s reload
 

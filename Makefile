@@ -27,5 +27,5 @@ certbot-renew:
 	docker exec alpine nginx -s reload
 
 nginx-reload:
-	docker exec alpine nginx -s reload
+	docker exec alpine nginx -t && docker exec alpine nginx -s reload
 

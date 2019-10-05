@@ -5,6 +5,7 @@ RUN apk --update add \
     php7-fpm \
     php7-curl \
     php7-json \
+    php7-zip \
     php7-zlib \
     php7-session \
     php7-mbstring \

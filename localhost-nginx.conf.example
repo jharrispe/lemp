@@ -1,9 +1,6 @@
 server {
-    server_name hostname.localhost;
-
-    root /app/laravel/public;
-
-    listen 80;
+    server_name ~^(?<sub>[^.]+).localhost;
+    root /app/sites/$sub/public;
 
     index index.php index.html;
 
@@ -21,9 +18,5 @@ server {
 
     location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml|woff|woff2)$ {
         expires 360d;
-    }
-
-    location ~ /\. {
-        deny all;
     }
 }

@@ -20,7 +20,7 @@ sh:
 	docker exec -it alpine sh
 
 restart:
-	docker exec -it alpine supervisorctl restart nginx
+	docker exec alpine supervisorctl restart nginx
 
 certbot-renew:
 	docker exec alpine /usr/bin/certbot renew
@@ -28,4 +28,3 @@ certbot-renew:
 
 nginx-reload:
 	docker exec alpine nginx -t && docker exec alpine nginx -s reload
-

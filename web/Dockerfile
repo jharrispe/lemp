@@ -14,16 +14,19 @@ RUN apk --update add \
     php7-tokenizer \
     php7-xml \
     php7-xmlwriter \
+    php7-xmlreader \
     php7-simplexml \
     php7-fileinfo \
     php7-pdo \
     php7-pdo_mysql \
+    php7-exif \
+    php7-gd \
     sudo \
     composer \
     git \
     certbot \
     certbot-nginx
-RUN addgroup -S app && adduser -S app -G app
+RUN addgroup -S -g 500 app && adduser -S app -G app -u 500
 RUN echo "app ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 COPY ./fs/ /
 WORKDIR /app

@@ -1,0 +1,52 @@
+#!/bin/sh
+#
+#       /etc/rc.d/init.d/lempd
+#
+#       Docker LEMP startup
+#
+# chkconfig:   2345 95 05
+# description: Docker LEMP startup
+
+### BEGIN INIT INFO
+# Provides:       lemp
+# Required-Start: $network cgconfig docker
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop:  0 1 6
+# Short-Description: start and stop lemp on docker
+# Description: Docker LEMP startup
+### END INIT INFO
+
+# Source function library.
+. /etc/init.d/functions
+
+start() {
+    cd /home/ec2-user/lemp && /sbin/runuser ec2-user -s /bin/bash -c "/usr/local/bin/docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+}
+
+stop() {
+    cd /home/ec2-user/lemp && /sbin/runuser ec2-user -s /bin/bash -c "/usr/local/bin/docker-compose down"
+}
+
+case "$1" in
+    start)
+       start
+       ;;
+    stop)
+       stop
+       ;;
+    restart)
+       stop
+       start
+       ;;
+    status)
+       docker ps
+       ;;
+    *)
+       echo "Usage: $0 {start|stop|status|restart}"
+esac
+
+exit 0
+

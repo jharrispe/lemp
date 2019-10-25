@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#       /etc/rc.d/init.d/lempd
+#       /etc/rc.d/init.d/lemp
 #
 #       Docker LEMP startup
 #
@@ -23,11 +23,11 @@
 . /etc/init.d/functions
 
 start() {
-    cd /home/ec2-user/lemp && /sbin/runuser ec2-user -s /bin/bash -c "/usr/local/bin/docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+    cd /app/lemp && /sbin/runuser ec2-user -s /bin/bash -c "/usr/local/bin/docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
 }
 
 stop() {
-    cd /home/ec2-user/lemp && /sbin/runuser ec2-user -s /bin/bash -c "/usr/local/bin/docker-compose down"
+    cd /app/lemp && /sbin/runuser ec2-user -s /bin/bash -c "/usr/local/bin/docker-compose down"
 }
 
 case "$1" in

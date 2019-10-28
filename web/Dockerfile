@@ -21,6 +21,7 @@ RUN apk --update add \
     php7-pdo_mysql \
     php7-exif \
     php7-gd \
+    php7-ctype \
     sudo \
     composer \
     git \

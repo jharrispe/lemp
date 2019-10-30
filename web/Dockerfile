@@ -22,9 +22,11 @@ RUN apk --update add \
     php7-exif \
     php7-gd \
     php7-ctype \
+    php7-soap \
     sudo \
     composer \
     git \
+    mysql-client \
     certbot \
     certbot-nginx
 RUN addgroup -S -g 500 app && adduser -S app -G app -u 500

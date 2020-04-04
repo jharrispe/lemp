@@ -23,6 +23,7 @@ RUN apk --update add \
     php7-gd \
     php7-ctype \
     php7-soap \
+    php7-bcmath \
     sudo \
     composer \
     git \

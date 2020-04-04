@@ -1,4 +1,4 @@
-FROM alpine:3.9.4
+FROM alpine:3.9.5
 RUN apk --update add \
     nginx \
     supervisor \
@@ -31,6 +31,7 @@ RUN apk --update add \
     certbot-nginx
 RUN addgroup -S -g 500 app && adduser -S app -G app -u 500
 RUN echo "app ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN chown app:app /var/tmp/nginx
 COPY ./fs/ /
 WORKDIR /app
 CMD ["supervisord","-n","-j","/supervisord.pid"]

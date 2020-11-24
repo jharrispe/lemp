@@ -24,6 +24,7 @@ RUN apk --update add \
     php7-ctype \
     php7-soap \
     php7-bcmath \
+    php7-mysqli \
     sudo \
     composer \
     git \

@@ -24,6 +24,14 @@ services:
       - ${MYSQL_DATA_DIR}:/var/lib/mysql
       - ./mysql.cnf:/etc/mysql/conf.d/mysql.cnf
 
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:4.8
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - 8080:80
+
 networks:
   default:
     driver: bridge

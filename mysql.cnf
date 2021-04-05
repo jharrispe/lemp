@@ -1,2 +1,4 @@
 [mysqld]
 performance_schema=OFF
+default-time-zone='+08:00'
+

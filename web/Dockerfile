@@ -34,7 +34,7 @@ RUN apk --update add \
     certbot-nginx
 RUN addgroup -S -g 1000 app && adduser -S app -G app -u 1000
 RUN echo "app ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-#RUN chown app:app /var/tmp/nginx
+RUN chown -R app:app /var/lib/nginx && chmod -R 755 /var/lib/nginx
 COPY ./fs/ /
 WORKDIR /app
 CMD ["supervisord","-n","-j","/supervisord.pid"]
